@@ -51,7 +51,6 @@ const LoginPage = () => {
       await auth.login({ email, password }, () =>
          navigate(from, { replace: true })
       );
-      await auth.login({email,password},()=>navigate(from,{replace:true}))
     } catch (error) {
       reset();
       setError("responseError", error);

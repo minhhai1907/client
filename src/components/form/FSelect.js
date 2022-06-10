@@ -3,7 +3,7 @@ import { TextField } from "@mui/material";
 
 function FSelect({ name, children, ...other }) {
   const { control } = useFormContext();
-
+console.log(name)
   return (
     <Controller
       name={name}
@@ -24,5 +24,16 @@ function FSelect({ name, children, ...other }) {
     />
   );
 }
-
+// name={name}
+// control={control}
+// render={({ field, fieldState: { error } }) => (
+//   <TextField 
+//   {...field}
+//     fullWidth
+//     error={!!error}
+//     helperText={error?.message}
+//     {...other}
+//   />
+// )}
+// />
 export default FSelect;

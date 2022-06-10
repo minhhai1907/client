@@ -1,5 +1,29 @@
-import { createRoot } from 'react-dom/client';
-import App from './App';
-const container = document.getElementById('root');
-const root = createRoot(container); // createRoot(container!) if you use TypeScript
-root.render(<App tab="home" />);
+// import { createRoot } from 'react-dom/client';
+// import App from './App';
+// const container = document.getElementById('root');
+// const root = createRoot(container); // createRoot(container!) if you use TypeScript
+// root.render(<App tab="home" />);
+
+
+
+
+import store from "./app/store";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+// import ThemeProvider from "./theme";
+
+// import "./index.scss";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <Provider store={store}>
+    {/* <BrowserRouter> */}
+      {/* <ThemeProvider> */}
+        <App />
+      {/* </ThemeProvider> */}
+    {/* </BrowserRouter> */}
+  </Provider>
+);
