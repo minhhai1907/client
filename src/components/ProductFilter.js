@@ -3,7 +3,7 @@ import ClearAllIcon from "@mui/icons-material/ClearAll";
 import React from "react";
 import { FRadioGroup } from "./form";
 
-const FILTER_CATEGORY_OPTIONS = ["All", "Electronic", "Home", "Books","Toy&Game","Fashion"];
+const FILTER_CATEGORY_OPTIONS = ["All", "Electronic", "Home", "Books","Toy&Games","Fashion"];
 const FILTER_PRICE_OPTIONS = [
   { value: "below", label: "Below $100" },
   { value: "between", label: "Between $100 - $500" },

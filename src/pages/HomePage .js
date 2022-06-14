@@ -1,18 +1,18 @@
-import { Alert, Box, Container, Grid, Stack } from "@mui/material";
+import { Alert, Box, Container, Grid, Pagination, Stack, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import ProductList from "../components/ProductList";
-import apiService from "../app/apiService";
 import LoadingScreen from "../components/LoadingScreen";
-// import Logo from "../components/Logo";
 import ProductFilter from "../components/ProductFilter";
 import ProductSearch from "../components/ProductSearch";
 import ProductSort from "../components/ProductSort";
 import { useForm } from "react-hook-form";
 import { FormProvider } from "../components/form";
 import orderBy from "lodash/orderBy";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { POSTLIST_PER_PAGE } from "../app/config";
+import { getAllPosts } from "../features/post/postSlice";
 
 const defaultValues = {
-  // gender: [],
   category: "All",
   priceRange: "",
   sortBy: "featured",
@@ -20,38 +20,33 @@ const defaultValues = {
 };
 
 function HomePage() {
-  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const {currentPage,totalPosts,postList}=useSelector((state)=>({
+    currentPage:state.post.currentPage,
+    totalPosts:state.post.totalPosts,
+    postList:state.post.postList,
+
+  }),shallowEqual)
+  const totalPages=Math.ceil(totalPosts/POSTLIST_PER_PAGE);
+  const dispatch=useDispatch();
+  const[page,setPage]=useState(1);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
   const methods = useForm({ defaultValues });
   const { watch, reset } = methods;
   // derived state
   const filters = watch();
-  console.log(products);
-  const filteredProducts = applyFilter(products, filters);
-console.log(filteredProducts)
-  useEffect(() => {
-    const getProducts = async () => {
-      setLoading(true);
-      try {
-        const response = await apiService.get("/posts/user/62906c34ffc364545ca311cb");
-        console.log(response )
-        setProducts(response.data);
-        setError("");
-      } catch (error) {
-        setError(error.message);
-      }
-      setLoading(false);
-    };
-    getProducts();
-  }, []);
-
+  const filteredProducts = applyFilter(postList, filters);
+  useEffect(()=>{
+    dispatch(getAllPosts(page))
+  },[dispatch,page])
   return (
     <Container sx={{ display: "flex", minHeight: "100vh", mt: 3 }}>
       <Grid container spacing={3}>
       <Grid item sx={6} md={2}>
- 
       <Stack>
         <FormProvider methods={methods}>
           <ProductFilter resetFilter={reset} />
@@ -69,8 +64,7 @@ console.log(filteredProducts)
             <ProductSearch />
             <ProductSort />
           </Stack>
-        </FormProvider>
-       
+        </FormProvider>      
         <Box sx={{ position: "relative", height: 1 }}>
           {loading ? (
             <LoadingScreen />
@@ -79,27 +73,28 @@ console.log(filteredProducts)
               {error ? (
                 <Alert severity="error">{error}</Alert>
               ) : (
-                <ProductList products={filteredProducts} />
+                <ProductList postList={filteredProducts} />              
               )}
             </>
           )}
         </Box>
+        {totalPosts>POSTLIST_PER_PAGE &&(
+          <Typography display="flex" justifyContent="flex-end" sx={{mx:1}}>
+     <Pagination
+     count={totalPages}
+     page={currentPage}
+     onChange={handleChangePage}  
+     />
+     </Typography>)}
       </Stack>
       </Grid>
-      </Grid>
+      </Grid>   
     </Container>
   );
 }
 
 function applyFilter(products, filters) {
   let filteredProducts = products;
-
-  // if (filters.gender.length) {
-  //   filteredProducts = filteredProducts.filter((product) =>
-  //     filters.gender.includes(product.gender)
-  //   );
-  // }
-
   if (filters.category !== "All") {
     filteredProducts = filteredProducts.filter(
       (product) => product.category === filters.category
@@ -122,13 +117,10 @@ function applyFilter(products, filters) {
 
   if (filters.searchQuery) {
     filteredProducts = filteredProducts.filter((product) =>
-    
-     {console.log(product.title)
+     {
        return product.title.toLowerCase().includes(filters.searchQuery.toLowerCase())}
-     
     );
   }
-  console.log(filteredProducts)
   if (filters.sortBy === "featured") {
     filteredProducts = orderBy(filteredProducts, ["sold"], ["desc"]);
   }
@@ -141,7 +133,6 @@ function applyFilter(products, filters) {
   if (filters.sortBy === "priceAsc") {
     filteredProducts = orderBy(filteredProducts, ["price"], ["asc"]);
   }
-console.log(filteredProducts)
   return filteredProducts;
 }
 
@@ -150,39 +141,3 @@ export default HomePage;
 
 
 
-// import React, { useState } from 'react'
-// import useAuth from '../hooks/useAuth';
-
-// function HomePage () {
-//   const {user}=useAuth();
-//   const {currentTab,setCurrentTab}=useState("shop");
-//   const handleChangeTab=(newValue)=>{
-//     setCurrentTab(newValue);
-//   };
-
-//   const PROFILE_TABS=[
-//     {
-//       value:"shop",
-
-//     },
-//     {
-//       value:"ho",
-
-//     },
-//     {
-//       value:"shop",
-
-//     },
-//     {
-//       value:"shop",
-
-//     },
-//   ]
-//   return (
-//     <div>
-//      <h1> Home page </h1>
-//     </div>
-//   )
-// }
-
-// export default HomePage 
