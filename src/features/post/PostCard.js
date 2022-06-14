@@ -10,7 +10,7 @@ import { useParams, Link as RouterLink } from "react-router-dom";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useDispatch } from 'react-redux';
-import { deletePost, updatePost } from './postSlice';
+import { deletePost} from './postSlice';
 
 
 function PostCard({post}) {
@@ -20,7 +20,7 @@ function PostCard({post}) {
     const navigate = useNavigate();
     const dispatch=useDispatch();
   return (
-//    
+
 <Container sx={{ my: 3 }}>
       
       <Box sx={{ position: "relative", height: 1 }}>
@@ -40,8 +40,7 @@ function PostCard({post}) {
                           <Box
                             sx={{
                               borderRadius: 3,
-                              overflow: "hidden",
-                              // display: "flex",
+                              overflow: "hidden",                  
                               height:"50vh"
                             }}
                           >
@@ -49,41 +48,32 @@ function PostCard({post}) {
                               src={post.image}
                               width="100%"
                               height="100%"
-                              alt="product"
-                        
+                              alt="product"                     
                             />
                           </Box>
                         </Box>
                       </Grid>
-                      <Grid item xs={12} md={6}>
-                     
-        {/* <Link underline="hover" color="inherit"  component={RouterLink} to="/">
-          SwapTo
-        </Link> */}
-      
-      
-                        <Typography variant="h5" paragraph display="flex" justifyContent="flex-end">
-                        
-                          
+                      <Grid item xs={12} md={6}>      
+                        <Typography variant="h5" paragraph display="flex" justifyContent="flex-end">                                               
                           <IconButton
                           size='small'
-                    sx={{ color: "grey" }}
-                    onClick={() =>
-                      navigate(`/posts/myPost/update/${post._id}`)
-                    }
-                  >
-                    <EditIcon />
+                          sx={{ color: "grey" }}
+                          onClick={() =>
+                            navigate(`/posts/myPost/update/${post._id}`)
+                           }
+                          >
+                            <EditIcon />
                    
-                  </IconButton>
+                          </IconButton>
                           <IconButton
                           size='small'
-                    sx={{ color: "red" }}
-                    onClick={() =>
-                      dispatch(deletePost({post}))
-                    }
-                  >
-                    <DeleteForeverIcon />
-                  </IconButton>
+                          sx={{ color: "red" }}
+                          onClick={() =>
+                            dispatch(deletePost({post}))
+                          }
+                          >
+                           <DeleteForeverIcon />
+                          </IconButton>
                         </Typography>
                         <Typography color="text.primary" variant='h6' sx={{ml:1}}>{post?.title}</Typography>
                         
@@ -92,37 +82,28 @@ function PostCard({post}) {
                           alignItems="center"
                           spacing={1}
                           sx={{ mb: 2 }}
-                        >
-                       
+                        >                      
                         </Stack>
-                        <Typography variant="h4" sx={{ mb: 3 }}>
-                         
+                        <Typography variant="h4" sx={{ mb: 3 }}>                       
                           &nbsp;{fCurrency(post.price)}
-                        </Typography>
-                       
+                        </Typography>                       
                         <Divider sx={{ borderStyle: "dashed" }} />
                         <Typography sx={{m:1}}>
                          {post.category}
                         </Typography>
                         <Divider sx={{ borderStyle: "dashed" }} />
-                        <Box    sx={{ml:1}}>
-                          <ReactMarkdown
-                            // rehypePlugins={[rehypeRaw]}
-                            children={post.description}
-                         
+                        <Box sx={{ml:1}}>
+                          <ReactMarkdown                         
+                            children={post.description}                       
                           />
                         </Box>
                         <Divider sx={{ borderStyle: "dashed" }} />
-                        <Box sx={{ my: 2 }}>
-                          
+                        <Box sx={{ my: 2 }}>                          
                           <CommentList productId={post._id}/>
                           <CommentForm productId={post._id}/>
-                        </Box>
-                        
-                      </Grid>
-                      
-                    </Grid>
-                    
+                        </Box>                       
+                      </Grid>                     
+                    </Grid>                   
                   </Card>
                 ) : (
                   <Typography variant="h6">Product not found!</Typography>
@@ -131,8 +112,7 @@ function PostCard({post}) {
             )}
           </>
         )}
-      </Box>
-      
+      </Box>     
     </Container>
   )
 }

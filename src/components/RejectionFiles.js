@@ -1,6 +1,7 @@
 import {Box,Typography,Paper} from "@mui/material";
 import {fData} from "../utils/NumberFormat.js";
 import {alpha} from "@mui/material/styles";
+import React from "react";
 
 
 function RejectionFiles({fileRejections}){
@@ -13,7 +14,7 @@ function RejectionFiles({fileRejections}){
             mt:3,
             borderColor:"error.light",
             bgcolor:(theme)=>alpha(theme.palette.error.main,0.08),
-        }}>
+            }}>
             {fileRejections.map(({file,errors})=>{
                 const {path,size}=file;
                 return (
@@ -22,14 +23,13 @@ function RejectionFiles({fileRejections}){
                             {path}-{fData(size)}
                         </Typography>
                         {errors.map((error)=>(
-                            <Typography key={error.code} variant="caption" component="p">
-                                -{error.message}
-                            </Typography>
-            ))}
+                        <Typography key={error.code} variant="caption" component="p">
+                        -{error.message}
+                        </Typography>
+                        ))}
                     </Box>
-                );
+                    );
             })}
-
         </Paper>
     )
 }

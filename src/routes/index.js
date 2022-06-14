@@ -12,9 +12,8 @@ import NotFoundPage from "../pages/NotFoundPage";
 import RegisterPage from "../pages/RegisterPage";
 import AuthRequire from "./AuthRequire";
 import UpdatePostPage from "../pages/UpdatePostPage"
-
-
-
+// import MyNotification from "../pages/MyNotification";
+import UserDetailPage from "../pages/UserDetailPage";
 
 function Router(){
     return (
@@ -24,18 +23,15 @@ function Router(){
             <Route path="me" element={<AccountPage/>}/>
             <Route path="/posts/:id" element={<DetailPage />} />
             <Route path="/user/favourite" element={<FavouritePage />} />
+            <Route path="/user/:id" element={<UserDetailPage />} />
             <Route path="/posts/myPost/update/:postId" element={<UpdatePostPage/>} />
-            <Route path="/posts/myPosts" element={<MyPostPage />} />
-           
-        
+            <Route path="/posts/myPosts" element={<MyPostPage />} /> 
         </Route>
         <Route element={<BlankLayout/>}>
             <Route path="login" element={<LoginPage/>} />
             <Route path="/register" element={<RegisterPage/>}/>
-            <Route path="*" element={<NotFoundPage/>}/>
-          
-        </Route>
-       
+            <Route path="*" element={<NotFoundPage/>}/>         
+        </Route>      
         </Routes>
     );
 

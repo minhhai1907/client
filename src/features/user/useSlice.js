@@ -47,25 +47,6 @@ const slice = createSlice({
   },
 });
 
-// export const updateAccount =
-//   ({ password, passwordConfirmation, avatarUrl, ...data }) =>
-//   async (dispatch) => {
-//     data.newPassword = password;
-//     data.confirmPassword = passwordConfirmation;
-
-//     dispatch(slice.actions.startLoading());
-//     try {
-//       if (avatarUrl instanceof File) {
-//         const imageUrl = await cloudinaryUpload(avatarUrl);
-//         data.avatarUrl = imageUrl;
-//       } else data.avatarUrl = avatarUrl;
-//       console.log(data);
-//       const response = await apiService.put("/user/me/update", data);
-//       dispatch(slice.actions.updateAccountSuccess(response.data));
-//     } catch (error) {
-//       dispatch(slice.actions.hasError(error.message));
-//     }
-//   };
 export const updateUserProfile=({userId,
   name,
   avatarUrl,
@@ -83,7 +64,6 @@ export const updateUserProfile=({userId,
       const data={
         name,
         aboutMe,
-        // avatarUrl,
         city,
         country,
         facebookLink,
@@ -94,22 +74,15 @@ export const updateUserProfile=({userId,
       if(avatarUrl instanceof File) {
         const imageUrl= await cloudinaryUpload(avatarUrl);
         data.avatarUrl=imageUrl;
-        console.log(imageUrl)
       }
-      console.log(userId)
       const response=await apiService.put(`/users/${userId}`,data);
-      console.log(response.data)
       dispatch(slice.actions.updateUserProfileSuccess(response.data));
-      console.log("di vao day")
-      // toast.success("update profile successfully")
       toast.success("update success")
-      console.log("ra tai day")
     } catch (error) {
       dispatch(slice.actions.hasError());
       toast.error(error.message)
     }
   };
-
 export const deactivateAccount = () => async (dispatch) => {
   dispatch(slice.actions.startLoading());
   try {

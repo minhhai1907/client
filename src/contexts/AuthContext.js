@@ -1,3 +1,4 @@
+import React from "react";
 import apiService from "../app/apiService";
 import { createContext, useEffect, useReducer } from "react";
 import { useSelector } from "react-redux";
@@ -57,7 +58,17 @@ const reducer = (state, action) => {
       };
      
     case UPDATE_PROFILE:
-      const {name,avatarUrl,aboutMe,city,country,facebookLink,instagramLink,linkedinLink,twitterLink } = action.payload;
+      const {
+        name,
+        avatarUrl,
+        aboutMe,
+        city,
+        country,
+        facebookLink,
+        instagramLink,
+        linkedinLink,
+        twitterLink 
+      } = action.payload;
       return {
         ...state,
         user: {
@@ -85,17 +96,14 @@ function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const updatedProfile = useSelector((state) => state.user.updatedProfile);
 
-
   useEffect(() => {
     const initialize = async () => {
       try {
         const accessToken = window.localStorage.getItem("accessToken");
         if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken);
-
           const response = await apiService.get("/users/me");
           const user = response.data;
-          console.log(user)
           dispatch({
             type: INITIALIZE,
             payload: { isAuthenticated: true, user },
@@ -110,7 +118,6 @@ function AuthProvider({ children }) {
         }
       } catch (error) {
         setSession(null);
-
         dispatch({
           type: INITIALIZE,
           payload: { isAuthenticated: false, user: null },
@@ -126,11 +133,8 @@ function AuthProvider({ children }) {
   },[updatedProfile]);
 
   const login = async ({ email, password }, callback) => {
-    console.log("email,password", email, password);
-
     const response = await apiService.post("/auth/login", { email, password });
     const { user, accessToken } = response.data;
-
     setSession(accessToken);
     dispatch({
       type: LOGIN_SUCCESS,

@@ -35,14 +35,9 @@ const SOCIAL_LINKS=[
   },
 ]
 
-
-
 function AccountSocialLinks() {
   const {user}=useAuth();
-  console.log(user)
-const isLoading=useSelector((state)=>state.user.isLoading)
-console.log(isLoading)
-
+  const isLoading=useSelector((state)=>state.user.isLoading)
   const defaultValues={
     facebookLink:user?.facebookLink||"",
     instagramLink:user?.instagramLink||"",
@@ -58,41 +53,32 @@ console.log(isLoading)
   }=methods;
 
   const dispatch=useDispatch();
-  
   const onSubmit=async (data)=>{
-   alert("hello");
     dispatch(updateUserProfile({userId:user._id,...data}))
   }
-  console.log(user._id)
-
   return (
     <Card sx={{p:1}}>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={3} alignItems="flex-end">
-
-          {SOCIAL_LINKS.map((link)=>(
-           
+          {SOCIAL_LINKS.map((link)=>(          
             <FTextField
             key={link.value}
-            name={link.value}
-           
+            name={link.value}           
             InputProps={{
               startAdornment:(
                 <InputAdornment position="start">{link.icon}</InputAdornment>
               ),
             }}
-            />
-          
-))}
+            />        
+          ))}
           <LoadingButton
-          type='submit'
-          variant='contained'
-          loading={isSubmitting||isLoading}
-          >
-          Save Changes
+            type='submit'
+            variant='contained'
+            loading={isSubmitting||isLoading}
+            >
+            Save Changes
           </LoadingButton>
         </Stack>
-
       </FormProvider>
     </Card>
   )

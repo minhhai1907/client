@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea, Stack,CardActions } from "@mui/material";
+import { CardActionArea, Stack } from "@mui/material";
 import { fCurrency } from "../utils/NumberFormat";
 import { useNavigate } from "react-router-dom";
 import useFavouriteContext from "../hooks/useFavouriteContext";
@@ -39,17 +39,13 @@ function ProductCard({ product }) {
           </Stack>
         </CardContent>
       </CardActionArea>
-      {/* <CardActions  > */}
         <Typography display="flex" justifyContent="flex-end" sx={{mx:1}}>
         <FavoriteIcon  onClick={() => dispatch({ type: "ADD", payload: product })} 
         style={{
           cursor:"pointer",
           color:"grey"
-          }}/>
-        {/* < FavoriteIcon  onClick={() => dispatch({ type: "DEL_POST", payload:product._id })} 
-        style={{cursor:"pointer", color:"grey"}} /> */}
+           }}/>
         </Typography>
-      {/* </CardActions> */}
     </Card>
   );
 }

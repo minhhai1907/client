@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import ProductList from "../components/ProductList";
 import apiService from "../app/apiService";
 import LoadingScreen from "../components/LoadingScreen";
-import Logo from "../components/Logo";
+// import Logo from "../components/Logo";
 import ProductFilter from "../components/ProductFilter";
 import ProductSearch from "../components/ProductSearch";
 import ProductSort from "../components/ProductSort";

@@ -6,5 +6,6 @@ export const REACT_APP_CLOUDINARY_UPLOAD_PRESET =
   process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET;
   export const COMMENT_PER_POST=2;
   export const POSTS_PER_PAGE=2;
+  export const POSTLIST_PER_PAGE=9;
   export const API_GOOGLE_KEY=
   process.env.REACT_APP_API_GOOGLE_KEY;
