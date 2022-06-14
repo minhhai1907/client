@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Card, alpha, Stack } from "@mui/material";
-
 import { FormProvider, FTextField } from "../../components/form";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -18,9 +17,8 @@ const defaultValues = {
   image: "",
 };
 
-function PostForm({user}) {
+function PostForm() {
   const { isLoading } = useSelector((state) => state.post);
-
   const methods = useForm({
     resolver: yupResolver(yupSchema),
     defaultValues,
@@ -32,11 +30,9 @@ function PostForm({user}) {
     formState: { isSubmitting },
   } = methods;
   const dispatch = useDispatch();
-
   const onSubmit = (data) => {
     dispatch(createPost(data)).then(() => reset());
   };
-
   return (
     <Card sx={{ p: 3 }}>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
@@ -54,9 +50,7 @@ function PostForm({user}) {
               },
             }}
           />
-
           <FTextField name="image" fullWidth />
-
           <Box
             sx={{
               display: "flex",

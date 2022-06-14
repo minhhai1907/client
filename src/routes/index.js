@@ -12,7 +12,6 @@ import NotFoundPage from "../pages/NotFoundPage";
 import RegisterPage from "../pages/RegisterPage";
 import AuthRequire from "./AuthRequire";
 import UpdatePostPage from "../pages/UpdatePostPage"
-// import MyNotification from "../pages/MyNotification";
 import UserDetailPage from "../pages/UserDetailPage";
 
 function Router(){

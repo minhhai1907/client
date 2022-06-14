@@ -20,15 +20,10 @@ function CommentCard({comment}) {
             <Typography variant='caption' sx={{color:"text.disabled"}} >
             {fToNow(comment.createdAt)}
             </Typography>
-            {/* <Typography variant='caption' sx={{color:"text.disabled"}} >
-            {fDateTime(comment.createdAt)}
-            </Typography> */}
            </Stack>
            <Typography variant='body2' sx={{color:"text.secondary"}} >
             {comment.content}
             </Typography>
-            
-
        </Paper>
    </Stack>
   )

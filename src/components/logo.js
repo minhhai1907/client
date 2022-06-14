@@ -8,11 +8,9 @@ function Logo({ disabledLink = false, sx }) {
       <img  src={logoImg} alt="logo" width="100%" height="100%" />
     </Box>
   );
-
   if (disabledLink) {
     return <>{logo}</>;
   }
-
   return <RouterLink to="/">{logo}</RouterLink>;
 }
 

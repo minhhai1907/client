@@ -101,7 +101,6 @@ const UpdateProfile = () => {
             maxSize={3145728}
             onDrop={handleDrop}
           />
-
           <FTextField
             multiline
             rows={4}
@@ -152,7 +151,6 @@ const UpdateProfile = () => {
             }}
           />
         </Stack>
-
         <LoadingButton
           fullWidth
           size="large"

@@ -44,7 +44,6 @@ function CommentList({productId}) {
   }else if(isLoading){
     renderComments=<LoadingScreen/>;
   }
-
   return (
     <Stack spacing={1.5}>
       <Stack direction="row" justifyContent="space-between">
@@ -55,7 +54,6 @@ function CommentList({productId}) {
           ?`${totalComments} comment`
         :"No comment"
         }
-
         </Typography>
         {totalComments>COMMENT_PER_POST&&(
           <Pagination

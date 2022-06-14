@@ -6,7 +6,7 @@ function MainFooter() {
    <Typography variant='body2' color="test.secondary" align='center' p={1}>
      {"Copyright"}{" "}
      <Link color="inherit" href="https://google.com">
-       Google
+       Google©
      </Link>{" "}
      {new Date().getFullYear()}
      {"."}

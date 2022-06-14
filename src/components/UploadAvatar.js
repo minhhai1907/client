@@ -4,7 +4,6 @@ import {useDropzone} from "react-dropzone";
 import {Typography,Box} from "@mui/material";
 import AddAPhotoRoundedIcon from "@mui/icons-material/AddAPhotoRounded";
 import {styled,alpha} from "@mui/material/styles";
-import { borderRadius, height, margin, width } from "@mui/system";
 import RejectionFiles from "./RejectionFiles";
 
 
@@ -49,7 +48,6 @@ const PlaceholderStyle=styled("div")(({theme})=>({
         duration:theme.transitions.duration.shorter,
     }),
     "&:hover":{opacity:0.72}
-
 }));
 function UploadAvatar({error,file,helperText,sx,...other}){
 const {getRootProps,
@@ -89,7 +87,6 @@ sx={{
                 <img alt="avatar" src={isString(file)?file:file.preview}/>
             </Box>
         )}
-
         <PlaceholderStyle
         classname="placeholder"
         sx={{
@@ -104,17 +101,13 @@ sx={{
             <Typography variant="caption">
                 {file?"update photo":"upload photo"}
             </Typography>
-        </PlaceholderStyle>
-      
+        </PlaceholderStyle>     
 </DropZoneStyle>
-
-
 </RootStyle>
-
-{helperText&&helperText}
-{fileRejections.length>0&&(
+    {helperText&&helperText}
+    {fileRejections.length>0&&(
     <RejectionFiles fileRejections={fileRejections}/>
-)}
+    )}
 </>
 );
 }

@@ -2,7 +2,6 @@ import {createSlice} from "@reduxjs/toolkit";
 import apiService from "../../app/apiService";
 import { COMMENT_PER_POST } from "../../app/config";
 
-
 const initialState={
     isLoading:false,
     error:null,
@@ -51,19 +50,15 @@ export const createComment=({content,productId})=>async(dispatch)=>{
           content,
           productId
       })  
-      console.log(response)
       dispatch(slice.actions.createCommentSuccess(response.data))
       dispatch(getComments({productId}))
-      console.log(response)
     } catch (error) {
         dispatch(slice.actions.hasError(error.message))
     }
 }
-
 export const getComments=
 ({productId,page=1,limit=COMMENT_PER_POST})=>
 async(dispatch)=>{
-    console.log(productId)
     dispatch(slice.actions.startLoading());
     try {
         const params={
@@ -73,9 +68,7 @@ async(dispatch)=>{
       const response=await apiService.get(`/posts/${productId}/comments`,{
           params
       })  ;
-    //   console.log(response)
       dispatch(slice.actions.getCommentSuccess({...response.data,productId,page}))
-    //   console.log(response)
     } catch (error) {
         dispatch(slice.actions.hasError(error.message))
     }

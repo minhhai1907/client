@@ -1,4 +1,4 @@
-import { Alert, Box, Breadcrumbs, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, Divider, Grid, IconButton, Stack, Typography } from '@mui/material'
+import { Alert, Box,Card, Container, Divider, Grid, IconButton, Stack, Typography } from '@mui/material'
 import React,{useState} from 'react'
 import { fCurrency } from '../../utils/NumberFormat';
 import { Link, useNavigate } from "react-router-dom";
@@ -12,7 +12,6 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useDispatch } from 'react-redux';
 import { deletePost} from './postSlice';
 
-
 function PostCard({post}) {
     const params = useParams();
     const [loading, setLoading] = useState(false);
@@ -20,9 +19,7 @@ function PostCard({post}) {
     const navigate = useNavigate();
     const dispatch=useDispatch();
   return (
-
-<Container sx={{ my: 3 }}>
-      
+<Container sx={{ my: 3 }}>   
       <Box sx={{ position: "relative", height: 1 }}>
         {loading ? (
           <LoadingScreen />
@@ -62,8 +59,7 @@ function PostCard({post}) {
                             navigate(`/posts/myPost/update/${post._id}`)
                            }
                           >
-                            <EditIcon />
-                   
+                            <EditIcon />                  
                           </IconButton>
                           <IconButton
                           size='small'
@@ -75,8 +71,7 @@ function PostCard({post}) {
                            <DeleteForeverIcon />
                           </IconButton>
                         </Typography>
-                        <Typography color="text.primary" variant='h6' sx={{ml:1}}>{post?.title}</Typography>
-                        
+                        <Typography color="text.primary" variant='h6' sx={{ml:1}}>{post?.title}</Typography>                       
                         <Stack
                           direction="row"
                           alignItems="center"

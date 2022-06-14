@@ -3,7 +3,6 @@ import { Switch, FormControlLabel } from "@mui/material";
 
 function FSwitch({ name, ...other }) {
   const { control } = useFormContext();
-
   return (
     <FormControlLabel
       control={

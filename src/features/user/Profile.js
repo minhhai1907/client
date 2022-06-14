@@ -14,15 +14,12 @@ import { spacing } from "@mui/system";
 const yupSchema = Yup.object().shape({
   content: Yup.string().required("Content is required"),
 });
-
 const defaultValues = {
   city: "",
   country: "",
 };
-
 const Profile = ({ user }) => {
   const { isLoading } = useSelector((state) => state.post);
-
   const methods = useForm({
     resolver: yupResolver(yupSchema),
     defaultValues,
@@ -34,43 +31,32 @@ const Profile = ({ user }) => {
     formState: { isSubmitting },
   } = methods;
   const dispatch = useDispatch();
-
   const onSubmit = (data) => {
     alert(JSON.stringify(data))
-    console.log(`data:${data}`)
-    // dispatch(createPost(data)).then(() => reset());
   };
 
   return (
     <Container sx={{ width: "90%", m: "1rem auto" }}>
       <Card sx={{ padding: "1.75rem" }}>
-        {/* <Box
-          sx={{
-            display: "flex",
-            // flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        > */}
             <Grid container spacing={2}>
                 <Grid item xs={4}>
                 <Box
             sx={{
-            //   bgcolor: "#fab1a0",
-            //   height: { md: "35vh", xs: "25vh" },
-            //   width: "90%",
-            //   borderRadius: "10px",
-            //   border: "5px solid #fff",
-            //   position: "relative",
-            //   mb: "5rem",
+              bgcolor: "#fab1a0",
+              height: { md: "35vh", xs: "25vh" },
+              width: "90%",
+              borderRadius: "10px",
+              border: "5px solid #fff",
+              position: "relative",
+              mb: "5rem",
             }}
           >
             <Box
               sx={{
-                // position: "absolute",
-                // bottom: 0,
-                // left: "50%",
-                // transform: " translate(-50%,50%)",
+                position: "absolute",
+                bottom: 0,
+                left: "50%",
+                transform: " translate(-50%,50%)",
               }}
             >
               {!user.avatarUrl ? (
@@ -107,8 +93,7 @@ const Profile = ({ user }) => {
           <Typography variant="h6">Facebok:{user.facebookLink}</Typography>
           <Typography variant="h6">Instagram: {user.instagramLink}</Typography>
           <Typography variant="h6">Linkedin:{user.linkedinLink}</Typography>
-          <Typography variant="h6">Twitter:{user.twitterLink}</Typography>
-         
+          <Typography variant="h6">Twitter:{user.twitterLink}</Typography>         
           </Box> */}
           {/* <Card sx={{ p: 3 }}>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
@@ -126,7 +111,6 @@ const Profile = ({ user }) => {
               },
             }}
           />
-
           <FTextField name="image" fullWidth  />
           <FTextField name="city" fullWidth >
           <TextField
@@ -136,7 +120,6 @@ const Profile = ({ user }) => {
           helperText="Some important text"
         />
           </FTextField>
-
           <Box
             sx={{
               display: "flex",
@@ -164,8 +147,7 @@ const Profile = ({ user }) => {
       noValidate
       autoComplete="off"
     >
-      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      
+      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>      
         <TextField
           id="outlined-textarea"
           label="Name"
@@ -237,12 +219,9 @@ const Profile = ({ user }) => {
           </Box>
  
        </FormProvider>
-    </Box>
-    
+    </Box>    
                 </Grid>
-            </Grid>
-          
-          
+            </Grid>         
         {/* </Box> */}
 
         {/* <Typography

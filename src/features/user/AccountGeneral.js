@@ -2,7 +2,6 @@ import React, {  useRef } from 'react'
 import {Box,Grid,Card,Stack} from "@mui/material";
 import {LoadingButton} from "@mui/lab";
 import useAuth from "../../hooks/useAuth";
-
 import {useForm} from "react-hook-form";
 import {FormProvider,FTextField} from "../../components/form";
 import {useDispatch,useSelector} from "react-redux";
@@ -31,7 +30,6 @@ function AccountGeneral() {
   const fileInput=useRef();
   const onSubmit= async(data) => {
     const file=fileInput.current.files[0];
-    console.log(file)
     data.avatarUrl=file;
     dispatch(updateUserProfile({userId:user._id,...data}));
   };

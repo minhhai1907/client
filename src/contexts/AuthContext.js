@@ -9,15 +9,12 @@ const initialState = {
   isInitialized: false,
   user: null,
 };
-
 const INITIALIZE = "AUTH.INITIALIZE";
 const LOGIN_SUCCESS = "AUTH.LOGIN_SUCCESS";
 const LOGOUT = "AUTH.LOGOUT";
 const REGISTER_SUCCESS = "AUTH.REGISTER_SUCCESS";
 const UPDATE_PROFILE = "AUTH.UPDATE_PROFILE";
-
-
-//luu accessToken vao API service header
+//add accessToken into API service header
 const setSession = (accessToken) => {
   if (accessToken) {
     window.localStorage.setItem("accessToken", accessToken);
@@ -55,8 +52,7 @@ const reducer = (state, action) => {
         ...state,
         isAuthenticated: false,
         user: null,
-      };
-     
+      };  
     case UPDATE_PROFILE:
       const {
         name,
@@ -83,13 +79,11 @@ const reducer = (state, action) => {
           linkedinLink,
           twitterLink
         },
-      };
-      
+      };   
     default:
       return state;
   }
 };
-
 const AuthContext = createContext({ ...initialState });
 
 function AuthProvider({ children }) {

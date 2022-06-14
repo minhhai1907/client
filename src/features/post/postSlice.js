@@ -13,7 +13,10 @@ const initialState = {
   postById:{},
   currentPage:{},
   totalPosts:{},
-  postList:[]
+  postList:[],
+  userPostList:[],
+  userTotalPosts:{},
+  userCurrentPostPage:{}
 };
 
 
@@ -49,14 +52,16 @@ const slice = createSlice({
     getPostsSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
-      const { posts, count } = action.payload;
+      const { posts, count,page } = action.payload;
       state.posts=posts;
       state.totalPosts=count;
+      state.currentPage=page;
     },
     getPostByIdSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
       state.postById=action.payload;
+    
     },
     getAllPostsSuccess(state, action){
       state.isLoading = false;
@@ -85,7 +90,6 @@ export const createPost =
       data.image=imageUrl;
       const response = await apiService.post("/posts",data );
       dispatch(slice.actions.createPostSuccess(response.data));
-      console.log(response.data)
       toast.success("Post successfully");
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
@@ -95,14 +99,13 @@ export const createPost =
 export const getPosts =
   ({ userId, page=1, limit = POSTS_PER_PAGE }) =>
   async (dispatch) => {
-
     dispatch(slice.actions.startLoading());
     try {
       const params = { page, limit };
       const response = await apiService.get(`/posts/postList/${userId}?page=${page}`, {
         params,
       });
-      dispatch(slice.actions.getPostsSuccess(response.data));
+      dispatch(slice.actions.getPostsSuccess(response.data,page));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
       toast.error(error.message);
@@ -139,7 +142,6 @@ export const deletePost =
       const postId=post._id;
       const response = await apiService.delete(`/posts/${postId}`);
       dispatch(slice.actions.deletePostsSuccess(response.data));
-      console.log(response.data)
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));    
     }

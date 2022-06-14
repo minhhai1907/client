@@ -7,16 +7,13 @@ import {
   TableHead,
   TableRow,
   Box,
-  Button,
-  Typography,
-  
+  Button  
 } from "@mui/material";
 import React from "react";
 import useFavouriteContext from "../hooks/useFavouriteContext";
 import { fCurrency } from "../utils/NumberFormat";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useNavigate } from "react-router-dom";
-
 
 function FavouritePostList() {
   const { favouritePosts, dispatch } = useFavouriteContext();
@@ -46,9 +43,7 @@ function FavouritePostList() {
             {favouritePosts.map(({ _id, title, price, image }) => (
               <TableRow key={_id}>
                 <TableCell>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                  
-             
+                  <Box sx={{ display: "flex", alignItems: "center" }}>    
                     <Box
                       sx={{
                         borderRadius: 2,
@@ -58,10 +53,8 @@ function FavouritePostList() {
                         height: 70,
                         mr: "5px",
       
-                      }}
-                    
-                    >
-                    
+                      }}                  
+                    >                   
                       <img
                         src={image}
                         alt="post"
@@ -69,16 +62,12 @@ function FavouritePostList() {
                         height="100%"
                         onClick={() => navigate(`/posts/${_id}`)}  
                         style={{cursor:"pointer"}}                   
-                      />
-                  
-                    </Box>
-                    
+                      />                 
+                    </Box>                   
                   </Box>
                 </TableCell>
                 <TableCell>{title}</TableCell>
-                <TableCell>{fCurrency(price)}</TableCell>
-               
-               
+                <TableCell>{fCurrency(price)}</TableCell>                            
                 <TableCell>
                   <IconButton
                     sx={{ color: "red" }}
@@ -93,12 +82,8 @@ function FavouritePostList() {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
-   
+      </TableContainer>   
     </Box>
   );
 }
-
-
-
 export default FavouritePostList;

@@ -2,9 +2,8 @@
 import { Card, Container, Grid, Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
-import { useParams, Link as RouterLink, Navigate, useNavigate, Link, Route } from "react-router-dom";
+import { useParams, Link as RouterLink, useNavigate} from "react-router-dom";
 import apiService from "../app/apiService";
-import { FTextField } from "../components/form";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -18,13 +17,11 @@ function UserDetailPage() {
   const navigate = useNavigate();
   useEffect(() => {
     if (params.id) {
-      console.log(params.id)
       const getUser = async () => {
         setLoading(true);
         try {
           const response = await apiService.get(`/users/${params.id}`);
           setUser(response.data);
-          console.log(response.data)
           setError("");
         } catch (error) {
           setError(error.message);
@@ -78,16 +75,12 @@ function UserDetailPage() {
              <Typography>{user.aboutMe}</Typography>
              <Typography>{user.facebookLink}</Typography>
              <Stack direction="row">
-              <FacebookIcon sx={{fontSize:30,color:"#4267B2"}}  />
-            
-              
+              <FacebookIcon sx={{fontSize:30,color:"#4267B2"}}  />            
               <InstagramIcon sx={{fontSize:30,color:"#e1306c"}}/>
               <LinkedInIcon sx={{fontSize:30,color:"#0e76a8"}}/>
               <TwitterIcon sx={{fontSize:30,color:"	#1DA1F2"}} />
-             </Stack>
-           
-            </Box>
-                   
+             </Stack>          
+            </Box>                  
           </Card>
        </Grid>
      </Grid>

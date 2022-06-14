@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import apiService from "../../app/apiService";
-import useAuth from "../../hooks/useAuth";
 import  {cloudinaryUpload}  from "../../utils/cloudinary";
 
 const initialState = {
@@ -11,7 +10,6 @@ const initialState = {
   profileUser: null,
   totalUsers: 0,
 };
-
 const slice = createSlice({
   name: "user",
   initialState,

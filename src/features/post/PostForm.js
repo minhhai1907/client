@@ -1,7 +1,6 @@
 
 import React, { useRef } from "react";
 import { Box, Card, Stack } from "@mui/material";
-
 import { FormProvider, FSelect, FTextField } from "../../components/form";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -50,7 +49,6 @@ function PostForm() {
   }
 
   return (
-    
     <Card sx={{p:3 }} >
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)} >
             <Box

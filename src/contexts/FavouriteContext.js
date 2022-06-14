@@ -1,8 +1,6 @@
 import React, { useReducer, createContext } from "react";
-import apiService from "../app/apiService";
 
 export const FavouriteContext = createContext();
-
 const initialState = {
   favourite: [],
   };

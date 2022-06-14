@@ -46,7 +46,6 @@ const LoginPage = () => {
   const onSubmit = async (data) => {
     const from = location.state?.from?.pathname || "/";
     const { email, password } = data;
-    console.log({password,email})
     try {
       await auth.login({ email, password }, () =>
          navigate(from, { replace: true })
@@ -61,8 +60,7 @@ const LoginPage = () => {
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={3}>
           {!!errors.responseError && (
-            <Alert severity="error">{errors.responseError.message}  </Alert>
-           
+            <Alert severity="error">{errors.responseError.message}  </Alert>         
           )}
           <Alert severity="info">
             Don't have an account?{" "}
@@ -88,8 +86,7 @@ const LoginPage = () => {
                 </InputAdornment>
               ),
             }}
-          />
-      
+          />    
         </Stack>
         <Stack
           sx={{
@@ -103,7 +100,6 @@ const LoginPage = () => {
             Forgot password?
           </Link>
         </Stack>
-
         <LoadingButton
           fullWidth
           size="large"

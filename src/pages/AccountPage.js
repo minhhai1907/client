@@ -1,5 +1,3 @@
-
-
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -46,12 +44,9 @@ function a11yProps(index) {
     'aria-controls': `simple-tabpanel-${index}`,
   };
 }
-
 export default function AccountPage() {
   const [value, setValue] = React.useState(0);
   const {user}=useAuth();
-  console.log(user)
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

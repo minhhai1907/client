@@ -36,7 +36,6 @@ const UpdatePostPage = () => {
 
   useEffect(()=>{
     if(Object.keys(postById).length){
-      console.log(postById)
       reset({
         title: postById?.title||"",
         price: postById?.price||"",

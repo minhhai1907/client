@@ -21,10 +21,6 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import CommentList from "../features/comment/CommentList"
 import CommentForm from "../features/comment/CommentForm"
-import Map from "../components/Map";
-import { API_GOOGLE_KEY } from "../app/config";
-// import GoogleMaps from "../components/GoogleMaps";
-// import { ChakraProvider, theme } from '@chakra-ui/react'
 import {fDate} from "../utils/TimeFormat"
 
 function DetailPage() {
@@ -55,7 +51,6 @@ function DetailPage() {
         <Link underline="hover" color="inherit" component={RouterLink} to="/">
           SwapTo
         </Link>
-        {/* <Typography color="text.primary">{product?.title}</Typography> */}
       </Breadcrumbs>
       <Box sx={{ position: "relative", height: 1 }}>
         {loading ? (
@@ -75,9 +70,7 @@ function DetailPage() {
                             <IconButton onClick={()=>navigate(`/user/${product.author?._id}`)}>
                             <Avatar src={product.author?.avatarUrl} alt={product.author?.name} />
                             </IconButton>
-                            <Typography variant="h6" sx={{m:1}}>{product.author?.name}</Typography>  
-                        
-                                              
+                            <Typography variant="h6" sx={{m:1}}>{product.author?.name}</Typography>                                               
                           </Stack>
                           <Typography variant='caption' sx={{color:"text.disabled", ml:6,mt:1}} >
                         {fDate(product.createdAt)}
@@ -86,8 +79,7 @@ function DetailPage() {
                             sx={{
                               borderRadius: 2,
                               overflow: "hidden",
-                              display: "flex",
-                              
+                              display: "flex",                             
                             }}
                           >
                             <img
@@ -97,9 +89,6 @@ function DetailPage() {
                               alt="product"
                             />
                           </Box>                      
-                    {/* <ChakraProvider theme={theme}>
-                        <GoogleMaps />
-                    </ChakraProvider>                      */}
                         </Box>
                       </Grid>
                       <Grid item xs={12} md={6}>                                
@@ -134,13 +123,7 @@ function DetailPage() {
                           <CommentForm productId={params.id}/>                         
                         </Box>                       
                       </Grid>                     
-                    </Grid>
-                 
-                    {/* <Box>
-                    <Map googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_GOOGLE_KEY}&callback=initMap`}
-                      loadingElement={<div style={{ height: "100% "}} />}
-                      containerElement={<div style={{ height: "100%" }} />}
-                      mapElement={<div style={{ height: `100%` }} />}/></Box> */}
+                    </Grid>                
                   </Card>
                 ) : (
                   <Typography variant="h6">Product not found!</Typography>

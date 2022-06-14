@@ -22,16 +22,17 @@ const defaultValues = {
 function HomePage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const[page,setPage]=useState(1);
 
   const {currentPage,totalPosts,postList}=useSelector((state)=>({
     currentPage:state.post.currentPage,
     totalPosts:state.post.totalPosts,
     postList:state.post.postList,
-
   }),shallowEqual)
+  
   const totalPages=Math.ceil(totalPosts/POSTLIST_PER_PAGE);
   const dispatch=useDispatch();
-  const[page,setPage]=useState(1);
+ 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
