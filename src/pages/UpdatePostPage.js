@@ -85,7 +85,7 @@ const UpdatePostPage = () => {
             />
          </Card>
        </Grid>
-       <Grid item sx={12} md={8}>
+       <Grid item xs={12} md={8} sx={{m:"auto"}} >
           <Card sx={{p:3}}>
             <Box
             sx={{

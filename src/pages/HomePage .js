@@ -45,16 +45,24 @@ function HomePage() {
     dispatch(getAllPosts(page))
   },[dispatch,page])
   return (
-    <Container sx={{ display: "flex", minHeight: "100vh", mt: 3 }}>
+    <Container maxWidth="lg"
+    sx={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: "1rem",
+      marginBottom: "1rem",
+      flexDirection: "column",
+    }}>
       <Grid container spacing={3}>
-      <Grid item sx={6} md={2}>
+      <Grid item xs={12} md={2} >
       <Stack>
         <FormProvider methods={methods}>
           <ProductFilter resetFilter={reset} />
         </FormProvider>
       </Stack>
       </Grid>
-        <Grid item sx={6} md={10}>
+        <Grid item lg={10} sm={6} xs={12}>
       <Stack sx={{ flexGrow: 1 }}>
         <FormProvider methods={methods}>
           <Stack
@@ -84,7 +92,8 @@ function HomePage() {
      <Pagination
      count={totalPages}
      page={currentPage}
-     onChange={handleChangePage}  
+     onChange={handleChangePage} 
+    
      />
      </Typography>)}
       </Stack>

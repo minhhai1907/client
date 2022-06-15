@@ -53,7 +53,7 @@ function PostForm() {
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)} >
             <Box
             sx={{
-              display:"grid",
+              display:"auto",
               rowGap:3,
               columnGap:2,
               gridTemplateColumns:{

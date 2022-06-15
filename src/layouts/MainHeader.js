@@ -133,12 +133,12 @@ function MainHeader() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
+            sx={{ display: { xs: 'block', sm: 'block' } }}
           >
             SwapTo
           </Typography>      
           <Box sx={{ flexGrow: 1 }} />        
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <Box sx={{ display: { xs: 'block', md: 'flex' } }}>
             <IconButton size='large'><FavouritePost/></IconButton>           
             <IconButton
               size="large"

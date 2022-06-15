@@ -75,7 +75,7 @@ function UserDetailPage() {
              <Typography>{user.aboutMe}</Typography>
              <Typography>{user.facebookLink}</Typography>
              <Stack direction="row">
-              <FacebookIcon sx={{fontSize:30,color:"#4267B2"}}  />            
+              <FacebookIcon sx={{fontSize:30,color:"#4267B2"}}/>            
               <InstagramIcon sx={{fontSize:30,color:"#e1306c"}}/>
               <LinkedInIcon sx={{fontSize:30,color:"#0e76a8"}}/>
               <TwitterIcon sx={{fontSize:30,color:"	#1DA1F2"}} />
